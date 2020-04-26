@@ -26,40 +26,56 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:background="@drawable/background_circle"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvValue"
+            app:layout_constraintBottom_toBottomOf="@id/tvValue"
             app:layout_constraintStart_toStartOf="parent"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:paddingStart="@dimen/default_padding"
             android:paddingEnd="@dimen/default_half_padding"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:textAppearance="@style/TextStyle.H6"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@id/circleTag"
+            android:textAppearance="@style/TextStyle.B1"
+            app:layout_constraintBottom_toTopOf="@id/tvValue"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/tvDescription"
+            app:layout_constraintStart_toEndOf="@id/circleTag"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed"
-            tools:text="@tools:sample/full_names"/>
+            tools:text="@tools:sample/full_names" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvDescription"
+            android:id="@+id/tvValue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingStart="@dimen/default_padding"
+            android:paddingEnd="@dimen/default_half_padding"
+            android:textAppearance="@style/TextStyle.H4"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            app:layout_constraintBottom_toTopOf="@id/tvChangeValue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/circleTag"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="@tools:sample/us_zipcodes" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvChangeValue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="3"
             android:paddingStart="@dimen/default_padding"
             android:paddingEnd="@dimen/default_half_padding"
-            android:textAppearance="@style/TextStyle.B2"
+            android:textAppearance="@style/TextStyle.B1"
+            app:layout_constraintTop_toBottomOf="@id/tvValue"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/circleTag"
-            app:layout_constraintTop_toBottomOf="@id/tvTitle"
-            tools:text="@tools:sample/lorem/random" />
+            tools:text="@tools:sample/us_zipcodes" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

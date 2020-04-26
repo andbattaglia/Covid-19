@@ -1,2 +1,8 @@
 <resources>
+
+    <string name="active_cases">Active Cases</string>
+    <string name="death_cases">Total Death</string>
+    <string name="recovered_cass">Total Recovered</string>
+    <string name="total_cases">Total Cases From Beginnings</string>
+
 </resources>

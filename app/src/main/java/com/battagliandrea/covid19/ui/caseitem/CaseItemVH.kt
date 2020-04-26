@@ -9,8 +9,12 @@ class CaseItemVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun render(item: CaseItem) = with(itemView) {
 
-        tvTitle.text = "${item.cases}"
-        tvDescription.text = "${+item.casesChange}"
+        tvTitle.text = item.title
+        tvValue.also {
+            it.text = "${item.cases}"
+            it.setTextColor(item.color)
+        }
+        tvChangeValue.text = "${+item.casesChange}"
 
         val bgShape = (circleTag.background as GradientDrawable);
         bgShape.setColor(item.color);

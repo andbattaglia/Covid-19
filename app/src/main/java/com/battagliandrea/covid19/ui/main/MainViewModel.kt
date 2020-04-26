@@ -4,8 +4,8 @@ package com.battagliandrea.covid19.ui.main
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.battagliandrea.covid19.ui.caseitem.CaseItem
-import com.battagliandrea.covid19.ui.caseitem.formatToCases
-import com.battagliandrea.usecase.GetLastDpcs
+import com.battagliandrea.covid19.ui.caseitem.CaseItemMapper
+import com.battagliandrea.usecase.GetDpcChanges
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -13,7 +13,8 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 open class MainViewModel @Inject constructor(
-        private val getLastDpcs: GetLastDpcs
+        private val getDpcChanges: GetDpcChanges,
+        private val caseItemMapper: CaseItemMapper
 ) : ViewModel() {
 
 
@@ -28,8 +29,13 @@ open class MainViewModel @Inject constructor(
 
     private fun load(){
         GlobalScope.launch (Dispatchers.Main) {
-            val result = withContext(Dispatchers.IO) { getLastDpcs() }
-            casesList.postValue(result.formatToCases())
+            val result = withContext(Dispatchers.IO) { getDpcChanges() }
+            casesList.postValue(caseItemMapper.formatToCases(result))
         }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+
     }
 }
