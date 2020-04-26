@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragment_main">
+
+    <fragment
+        android:id="@+id/fragment_main"
+        android:name="com.battagliandrea.covid19.ui.main.MainFragment"
+        android:label="Nav Fragment One"
+        tools:layout="@layout/fragment_main">
+
+<!--        <action-->
+<!--            android:id="@+id/action_beersFragment_to_beerDetailsFragment"-->
+<!--            app:destination="@id/fragment_main">-->
+
+<!--            <argument-->
+<!--                android:name="beerId"-->
+<!--                app:argType="long"/>-->
+<!--        </action>-->
+    </fragment>
+
+</navigation>
