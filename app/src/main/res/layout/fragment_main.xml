@@ -33,7 +33,7 @@
                     android:orientation="vertical"
                     android:outlineProvider="paddedBounds"
                     android:elevation="10dp"
-                    android:background="@color/white">
+                    android:background="@drawable/background_rect_rounded">
 
                     <fragment
                         android:id="@+id/fragment_case_list"
