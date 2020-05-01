@@ -1,0 +1,16 @@
+<resources>
+
+    <string name="title_daily">Coronavirus in Italia</string>
+    <string name="description_daily">Variazioni rispetto al giorno precedente</string>
+    <string name="title_charts">La curva giornaliera in Italia</string>
+    <string name="description_charts">Casi attualmente positivi, guariti, morti e casi totali dal primo rilevamento a oggi. Dati totali e casi nuovi giorno per giorno.</string>
+
+    <string name="active_cases">Positivi</string>
+    <string name="death_cases">Morti</string>
+    <string name="recovered_cass">Guariti</string>
+    <string name="total_cases">Toali</string>
+
+    <string name="tab_total">Totali</string>
+    <string name="tab_day_by_day">Giornalieri</string>
+
+</resources>
