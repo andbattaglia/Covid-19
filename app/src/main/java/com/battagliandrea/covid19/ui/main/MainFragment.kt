@@ -55,7 +55,7 @@ class MainFragment : Fragment() {
 
     private fun setupList(){
         recyclerView.adapter = mAdapter
-        recyclerView.addItemDecoration(MarginItemDecorator(resources.getDimension(R.dimen.default_half_padding).toInt()))
+        recyclerView.addItemDecoration(MarginItemDecorator(resources.getDimension(R.dimen.default_padding).toInt(), 0))
     }
 
     private fun renderBeers(data: List<ListItem>){

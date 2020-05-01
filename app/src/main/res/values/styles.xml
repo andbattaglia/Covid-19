@@ -1,7 +1,7 @@
 <resources>
 
     <!-- BASE THEME LIGHT-->
-    <style name="Covid19AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Covid19AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
 
         <!--THEME DEFAULT-->
         <item name="colorPrimary">@color/primaryColor</item>

@@ -42,6 +42,9 @@ dependencies {
     implementation deps.glide.runtime
     kapt  deps.glide.compiler
 
+    implementation deps.tools.lottie
+
+
     testImplementation deps.test.junit
     testImplementation deps.test.kotlin
 

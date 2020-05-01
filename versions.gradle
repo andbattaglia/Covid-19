@@ -28,6 +28,7 @@ versions.okHttp3 = '3.11.0'
 versions.gson = '2.8.5'
 
 versions.glide = '4.8.0'
+versions.lottie = '3.4.0'
 
 versions.mockito = '2.23.0'
 versions.mockitoKotlin = '2.0.0-RC2'
@@ -103,6 +104,10 @@ def glide = [:]
 glide.runtime = "com.github.bumptech.glide:glide:$versions.glide"
 glide.compiler = "com.github.bumptech.glide:compiler:$versions.glide"
 deps.glide = glide
+
+def tools = [:]
+tools.lottie = "com.airbnb.android:lottie:$versions.lottie"
+deps.tools = tools
 
 def test = [:]
 test.junit = "junit:junit:$versions.junit"
