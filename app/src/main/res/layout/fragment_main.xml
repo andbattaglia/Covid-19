@@ -31,25 +31,26 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:elevation="8dp"
-                    android:background="@color/secondaryTextColor">
+                    android:outlineProvider="paddedBounds"
+                    android:elevation="10dp"
+                    android:background="@color/white">
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerView"
+                    <fragment
+                        android:id="@+id/fragment_case_list"
+                        android:tag="CaseListFragment"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:clipToPadding="false"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        android:orientation="horizontal"
-                        tools:listitem="@layout/view_case_item" />
+                        android:layout_height="wrap_content"
+                        tools:layout="@layout/fragment_case_list"
+                        android:name="com.battagliandrea.covid19.ui.caselist.CaseListFragment"/>
 
-                    <Space
-                        android:layout_height="1000dp"
-                        android:layout_width="match_parent"/>
+                    <fragment
+                        android:id="@+id/fragment_chart"
+                        android:tag="ChartsFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:name="com.battagliandrea.covid19.ui.charts.ChartsFragment"
+                        tools:layout="@layout/fragment_chart"/>
                 </LinearLayout>
-
         </LinearLayout>
-
     </androidx.core.widget.NestedScrollView>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

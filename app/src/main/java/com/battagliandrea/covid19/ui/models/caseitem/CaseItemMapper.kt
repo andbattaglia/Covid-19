@@ -1,10 +1,10 @@
-package com.battagliandrea.covid19.ui.caseitem
+package com.battagliandrea.covid19.ui.models.caseitem
 
 import android.content.Context
-import android.graphics.Color
 import androidx.core.content.ContextCompat
 import com.battagliandrea.covid19.R
-import com.battagliandrea.domain.entity.DpcChangesEntity
+import com.battagliandrea.domain.entity.DpcVariationEntity
+import com.github.mikephil.charting.data.Entry
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -13,7 +13,7 @@ open class CaseItemMapper @Inject constructor(
     private val context: Context
 ) {
 
-    open fun formatToCases(dpc: DpcChangesEntity): List<CaseItem> {
+    open fun formatToCases(dpc: DpcVariationEntity): List<CaseItem> {
 
         val activeCase = CaseItem(
             tag = ContextCompat.getDrawable(context, R.drawable.img_circle_pink),

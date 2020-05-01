@@ -1,6 +1,8 @@
 package com.battagliandrea.covid19.di.module
 
 import com.battagliandrea.covid19.di.scope.FragmentScope
+import com.battagliandrea.covid19.ui.caselist.CaseListFragment
+import com.battagliandrea.covid19.ui.charts.ChartsFragment
 import com.battagliandrea.covid19.ui.main.MainFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -11,4 +13,12 @@ abstract class FragmentModule {
     @FragmentScope
     @ContributesAndroidInjector
     abstract fun mainFragment(): MainFragment
+
+    @FragmentScope
+    @ContributesAndroidInjector
+    abstract fun caseListFragment(): CaseListFragment
+
+    @FragmentScope
+    @ContributesAndroidInjector
+    abstract fun chartsFragment(): ChartsFragment
 }

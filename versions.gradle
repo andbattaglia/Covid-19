@@ -29,6 +29,7 @@ versions.gson = '2.8.5'
 
 versions.glide = '4.8.0'
 versions.lottie = '3.4.0'
+versions.MPAChart = '3.1.0'
 
 versions.mockito = '2.23.0'
 versions.mockitoKotlin = '2.0.0-RC2'
@@ -107,6 +108,7 @@ deps.glide = glide
 
 def tools = [:]
 tools.lottie = "com.airbnb.android:lottie:$versions.lottie"
+tools.mpa_chart = "com.github.PhilJay:MPAndroidChart:$versions.MPAChart"
 deps.tools = tools
 
 def test = [:]

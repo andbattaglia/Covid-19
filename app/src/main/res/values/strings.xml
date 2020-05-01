@@ -1,8 +1,16 @@
 <resources>
 
+    <string name="title_daily">Coronavirus in Italy</string>
+    <string name="description_daily">Daily Variations</string>
+    <string name="title_charts">The daily curve in Italy</string>
+    <string name="description_charts">Total and day-by-day progress of active cases, recovered cases, deaths and total cases from the beginning of the outbreak until today</string>
+
     <string name="active_cases">Active</string>
     <string name="death_cases">Death</string>
     <string name="recovered_cass">Recovered</string>
     <string name="total_cases">Total</string>
+
+    <string name="tab_total">Total</string>
+    <string name="tab_day_by_day">Daily</string>
 
 </resources>

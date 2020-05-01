@@ -42,4 +42,9 @@
         <item name="fontFamily">@font/raleway_medium</item>
     </style>
 
+    <style name="TextStyle.Tab" parent="@android:style/TextAppearance.Widget.TabWidget">
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/raleway_medium</item>
+    </style>
+
 </resources>

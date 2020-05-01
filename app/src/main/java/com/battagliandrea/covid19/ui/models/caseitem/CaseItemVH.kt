@@ -1,4 +1,4 @@
-package com.battagliandrea.covid19.ui.caseitem
+package com.battagliandrea.covid19.ui.models.caseitem
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

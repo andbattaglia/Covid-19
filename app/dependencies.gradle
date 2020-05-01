@@ -43,6 +43,7 @@ dependencies {
     kapt  deps.glide.compiler
 
     implementation deps.tools.lottie
+    implementation deps.tools.mpa_chart
 
 
     testImplementation deps.test.junit

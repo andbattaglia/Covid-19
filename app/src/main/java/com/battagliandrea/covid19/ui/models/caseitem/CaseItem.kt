@@ -1,10 +1,7 @@
-package com.battagliandrea.covid19.ui.caseitem
+package com.battagliandrea.covid19.ui.models.caseitem
 
-import android.graphics.Color
 import android.graphics.drawable.Drawable
 import com.battagliandrea.covid19.ui.common.ListItem
-import com.battagliandrea.domain.entity.DpcChangesEntity
-import com.battagliandrea.domain.entity.DpcEntity
 
 data class CaseItem(
     override val id: Long = 0,

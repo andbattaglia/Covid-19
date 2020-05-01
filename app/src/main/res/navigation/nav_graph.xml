@@ -5,20 +5,12 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/fragment_main">
 
+
     <fragment
         android:id="@+id/fragment_main"
         android:name="com.battagliandrea.covid19.ui.main.MainFragment"
-        android:label="Nav Fragment One"
+        android:label="NavMain"
         tools:layout="@layout/fragment_main">
-
-<!--        <action-->
-<!--            android:id="@+id/action_beersFragment_to_beerDetailsFragment"-->
-<!--            app:destination="@id/fragment_main">-->
-
-<!--            <argument-->
-<!--                android:name="beerId"-->
-<!--                app:argType="long"/>-->
-<!--        </action>-->
     </fragment>
 
 </navigation>

@@ -1,21 +1,20 @@
 package com.battagliandrea.usecase
 
-import com.battagliandrea.domain.entity.DpcChangesEntity
-import com.battagliandrea.domain.entity.DpcEntity
+import com.battagliandrea.domain.entity.DpcVariationEntity
 import com.battagliandrea.domain.repository.DpcRepository
 import javax.inject.Inject
 
-class GetDpcChanges @Inject constructor(
+class GetDpcDailyVariation @Inject constructor(
         private val dpcRepository: DpcRepository
 ){
 
-    suspend operator fun invoke() : DpcChangesEntity{
+    suspend operator fun invoke() : DpcVariationEntity{
         val dpcs = dpcRepository.get()
 
         val lastDpc = dpcs.last()
         val beforeLastDpc = dpcs.getOrNull(dpcs.lastIndex - 1)
 
-        return DpcChangesEntity(
+        return DpcVariationEntity(
             activeCases = lastDpc.activeCases,
             activeCasesChange = lastDpc.activeCases - (beforeLastDpc?.activeCases ?: 0),
             death = lastDpc.totalDeath,
