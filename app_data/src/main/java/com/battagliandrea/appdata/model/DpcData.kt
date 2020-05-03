@@ -1,6 +1,7 @@
 package com.battagliandrea.appdata.model
 
 import com.battagliandrea.domain.entity.DpcEntity
+import com.battagliandrea.domain.ext.parseDate
 import com.google.gson.annotations.SerializedName
 import java.util.*
 
@@ -31,7 +32,7 @@ fun List<DpcData>.map(): List<DpcEntity>{
 
 fun DpcData.map(): DpcEntity{
     return DpcEntity(
-        date = Date(),
+        date = data.parseDate(),
         nation = nation,
         intensiveCare = intensiveCare,
         hospitalized = hospitalized,

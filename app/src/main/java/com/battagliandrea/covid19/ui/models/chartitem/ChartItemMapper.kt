@@ -38,32 +38,34 @@ open class ChartItemMapper @Inject constructor(
             valuesTotalVariations.add(Entry(index.toFloat(), entity.totalChanges.toFloat()))
         }
 
-        val activeItem = ChartItem(
-            entries= valuesActive,
-            entriesVariations = valuesActiveVariations,
-            title= context.getString(R.string.active_cases),
-            color= ContextCompat.getColor(context, R.color.pink)
-        )
+        val activeItem =
+            ChartItem(
+                entries = valuesActive,
+                entriesVariations = valuesActiveVariations,
+                title = context.getString(R.string.active_cases),
+                color = ContextCompat.getColor(context, R.color.pink)
+            )
 
         val deathItem = ChartItem(
-            entries= valuesDeath,
+            entries = valuesDeath,
             entriesVariations = valuesDeathVariations,
-            title= context.getString(R.string.death_cases),
-            color= ContextCompat.getColor(context, R.color.darker_grey)
+            title = context.getString(R.string.death_cases),
+            color = ContextCompat.getColor(context, R.color.darker_grey)
         )
 
-        val recoveredItem = ChartItem(
-            entries= valuesRecovered,
-            entriesVariations = valuesRecoveredVariations,
-            title= context.getString(R.string.recovered_cass),
-            color= ContextCompat.getColor(context, R.color.green)
-        )
+        val recoveredItem =
+            ChartItem(
+                entries = valuesRecovered,
+                entriesVariations = valuesRecoveredVariations,
+                title = context.getString(R.string.recovered_cass),
+                color = ContextCompat.getColor(context, R.color.green)
+            )
 
         val totalItem = ChartItem(
-            entries= valuesTotal,
-            entriesVariations= valuesTotalVariations,
-            title= context.getString(R.string.total_cases),
-            color= ContextCompat.getColor(context, R.color.red)
+            entries = valuesTotal,
+            entriesVariations = valuesTotalVariations,
+            title = context.getString(R.string.total_cases),
+            color = ContextCompat.getColor(context, R.color.red)
         )
 
         return listOf(activeItem, deathItem, recoveredItem, totalItem)

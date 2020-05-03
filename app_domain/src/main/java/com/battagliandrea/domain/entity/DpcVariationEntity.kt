@@ -1,6 +1,7 @@
 package com.battagliandrea.domain.entity
 
 data class DpcVariationEntity (
+    val date: String = "",
     val activeCases: Long = 0,
     val activeCasesChange: Long = 0,
     val recovered: Long = 0,

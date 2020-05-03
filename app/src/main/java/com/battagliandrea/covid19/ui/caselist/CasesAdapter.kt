@@ -1,16 +1,21 @@
-package com.battagliandrea.covid19.ui.models.caseitem
+package com.battagliandrea.covid19.ui.caselist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.battagliandrea.covid19.R
 import com.battagliandrea.covid19.ui.common.ListItem
+import com.battagliandrea.covid19.ui.models.caseitem.CaseItem
+import com.battagliandrea.covid19.ui.models.lodingitem.LoadingItem
+import com.battagliandrea.covid19.ui.viewholder.CaseItemVH
+import com.battagliandrea.covid19.ui.viewholder.LoadingItemVH
 import javax.inject.Inject
 
 class CasesAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object{
-        const val TYPE_DEFAULT = 0
+        const val TYPE_LOADING = 0
+        const val TYPE_DEFAULT = 1
     }
 
 //    var onItemClickListener: OnItemClickListener? = null
@@ -23,6 +28,10 @@ class CasesAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView.Vie
                 val view = LayoutInflater.from(parent.context).inflate(R.layout.view_case_item, parent, false)
                 CaseItemVH(view)
             }
+            TYPE_LOADING -> {
+                val view = LayoutInflater.from(parent.context).inflate(R.layout.view_loading_item, parent, false)
+                LoadingItemVH(view)
+            }
             else -> {
                 throw RuntimeException("No supported viewType")
             }
@@ -32,6 +41,7 @@ class CasesAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView.Vie
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(getItemViewType(position)){
             TYPE_DEFAULT -> (holder as CaseItemVH).render(data[position] as CaseItem)
+            TYPE_LOADING -> (holder as LoadingItemVH).render(data[position] as LoadingItem)
             else -> {
                 throw RuntimeException("No supported viewType")
             }
@@ -48,6 +58,7 @@ class CasesAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView.Vie
 
     override fun getItemViewType(position: Int): Int {
         return when(data[position]){
+            is LoadingItem -> TYPE_LOADING
             is CaseItem -> TYPE_DEFAULT
             else -> -1
         }

@@ -13,4 +13,6 @@
     <string name="tab_total">Total</string>
     <string name="tab_day_by_day">Daily</string>
 
+    <string name="error_generic">Ops! Something was wrong.</string>
+
 </resources>

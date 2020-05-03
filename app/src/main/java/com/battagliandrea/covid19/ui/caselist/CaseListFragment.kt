@@ -5,16 +5,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.battagliandrea.covid19.R
 import com.battagliandrea.covid19.ext.getViewModel
 import com.battagliandrea.covid19.ext.observe
-import com.battagliandrea.covid19.ui.models.caseitem.CasesAdapter
+import com.battagliandrea.covid19.ui.base.ViewState
 import com.battagliandrea.covid19.ui.common.ListItem
 import com.battagliandrea.covid19.ui.utils.MarginItemDecorator
+import com.google.android.material.snackbar.Snackbar
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.fragment_case_list.*
+import kotlinx.android.synthetic.main.view_error.*
 import javax.inject.Inject
 
 
@@ -43,7 +46,8 @@ class CaseListFragment : Fragment() {
 
         mViewModel = getViewModel<CaseListViewModel>(viewModelFactory)
         with(mViewModel) {
-            observe(casesList){ renderCasesList(it) }
+            observe(headerViewState){ renderHeader(it) }
+            observe(listViewState){ renderCasesList(it) }
         }
 
         setupList()
@@ -54,7 +58,30 @@ class CaseListFragment : Fragment() {
         recyclerView.addItemDecoration(MarginItemDecorator(resources.getDimension(R.dimen.default_padding).toInt(), 0))
     }
 
-    private fun renderCasesList(data: List<ListItem>){
-        mAdapter.updateList(data)
+    private fun renderHeader(viewState: CaseListViewState.Header){
+        with(viewState){
+            tvTitle.text = title
+            tvDescription.text = description
+        }
+    }
+
+    private fun renderCasesList(viewState: CaseListViewState.CasesList){
+        with(viewState){
+            when(caseItems){
+                is ViewState.Success -> {
+                    containerError.visibility = View.GONE
+                    mAdapter.updateList(caseItems.data.orEmpty())
+                }
+                is ViewState.Error -> {
+                    containerError.visibility = View.VISIBLE
+                    tvError.text = caseItems.throwable.message
+                    mAdapter.updateList(caseItems.data.orEmpty())
+                }
+                is ViewState.Loading -> {
+                    containerError.visibility = View.GONE
+                    mAdapter.updateList(caseItems.data.orEmpty())
+                }
+            }
+        }
     }
 }

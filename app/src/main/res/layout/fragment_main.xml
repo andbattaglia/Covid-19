@@ -30,10 +30,11 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/default_padding"
                     android:orientation="vertical"
                     android:outlineProvider="paddedBounds"
                     android:elevation="10dp"
-                    android:background="@drawable/background_rect_rounded">
+                    android:background="@drawable/background_rect_rounded_top_white">
 
                     <fragment
                         android:id="@+id/fragment_case_list"

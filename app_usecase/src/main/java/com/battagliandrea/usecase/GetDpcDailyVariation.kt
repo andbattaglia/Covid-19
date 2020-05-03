@@ -1,6 +1,7 @@
 package com.battagliandrea.usecase
 
 import com.battagliandrea.domain.entity.DpcVariationEntity
+import com.battagliandrea.domain.ext.ddMMyyyy
 import com.battagliandrea.domain.repository.DpcRepository
 import javax.inject.Inject
 
@@ -15,6 +16,7 @@ class GetDpcDailyVariation @Inject constructor(
         val beforeLastDpc = dpcs.getOrNull(dpcs.lastIndex - 1)
 
         return DpcVariationEntity(
+            date = lastDpc.date.ddMMyyyy(),
             activeCases = lastDpc.activeCases,
             activeCasesChange = lastDpc.activeCases - (beforeLastDpc?.activeCases ?: 0),
             death = lastDpc.totalDeath,

@@ -3,11 +3,9 @@ package com.battagliandrea.covid19.ui.charts
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.battagliandrea.covid19.ui.models.caseitem.CaseItemMapper
 import com.battagliandrea.covid19.ui.models.chartitem.ChartItem
 import com.battagliandrea.covid19.ui.models.chartitem.ChartItemMapper
 import com.battagliandrea.usecase.GetDpcVariations
-import com.github.mikephil.charting.data.Entry
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
