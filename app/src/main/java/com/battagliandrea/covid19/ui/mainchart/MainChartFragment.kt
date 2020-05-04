@@ -1,4 +1,4 @@
-package com.battagliandrea.covid19.ui.charts
+package com.battagliandrea.covid19.ui.mainchart
 
 import android.content.Context
 import android.graphics.Color
@@ -13,7 +13,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.battagliandrea.covid19.R
 import com.battagliandrea.covid19.ext.getViewModel
 import com.battagliandrea.covid19.ext.observe
-import com.battagliandrea.covid19.ui.models.chartitem.ChartItem
+import com.battagliandrea.covid19.ui.base.ViewState
+import com.battagliandrea.covid19.ui.models.chartvariations.ChartVariations
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.components.YAxis.AxisDependency
@@ -25,9 +26,9 @@ import kotlinx.android.synthetic.main.fragment_chart.*
 import javax.inject.Inject
 
 
-class ChartsFragment : Fragment() {
+class MainChartFragment : Fragment() {
 
-    private lateinit var mViewModel: ChartsViewModel
+    private lateinit var mViewModel: MainChartViewModel
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -45,9 +46,9 @@ class ChartsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mViewModel = getViewModel<ChartsViewModel>(viewModelFactory)
+        mViewModel = getViewModel<MainChartViewModel>(viewModelFactory)
         with(mViewModel) {
-            observe(chartData){ renderChart(it) }
+            observe(tabsViewState){ renderTabs(it) }
         }
 
         setupChart()
@@ -90,14 +91,25 @@ class ChartsFragment : Fragment() {
         lineChart.setPinchZoom(false)
     }
 
-    private fun renderChart(items: List<ChartItem>){
+    private fun renderTabs(viewState: MainChartViewState.Tabs){
+        with(viewState){
 
+            when(chartViewState){
+                is ViewState.Success -> { populateChart(chartViewState.data.orEmpty(), selected)}
+                is ViewState.Error -> { }
+                is ViewState.Loading -> { }
+            }
+        }
+    }
+
+    private fun populateChart(data: List<ChartVariations>, selectedTab: MainChartViewState.TabType){
         val sets = ArrayList<LineDataSet>()
 
-        items.forEach { item ->
-            val entries = when(item.mode){
-                ChartItem.Mode.TOTAL -> item.entries
-                ChartItem.Mode.DAILY -> item.entriesVariations
+        data.forEach { item ->
+
+            val entries = when(selectedTab){
+                MainChartViewState.TabType.TOTAL -> item.entries
+                MainChartViewState.TabType.DAILY -> item.entriesVariations
             }
 
             val set: LineDataSet = LineDataSet(entries, item.title)
@@ -112,12 +124,12 @@ class ChartsFragment : Fragment() {
             sets.add(set)
         }
 
-        val data = LineData()
-        sets.forEach { data.addDataSet(it) }
-        data.setValueTextColor(Color.WHITE)
-        data.setValueTextSize(9f)
+        val chartData = LineData()
+        sets.forEach { chartData.addDataSet(it) }
+        chartData.setValueTextColor(Color.WHITE)
+        chartData.setValueTextSize(9f)
 
-        lineChart.data = data
+        lineChart.data = chartData
         lineChart.notifyDataSetChanged()
         lineChart.invalidate()
     }

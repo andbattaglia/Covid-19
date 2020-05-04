@@ -1,4 +1,4 @@
-package com.battagliandrea.covid19.ui.caselist
+package com.battagliandrea.covid19.ui.dailycases
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,7 +11,7 @@ import com.battagliandrea.covid19.ui.viewholder.CaseItemVH
 import com.battagliandrea.covid19.ui.viewholder.LoadingItemVH
 import javax.inject.Inject
 
-class CasesAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class DailyCasesAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object{
         const val TYPE_LOADING = 0

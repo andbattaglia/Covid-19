@@ -1,4 +1,4 @@
-package com.battagliandrea.covid19.ui.caselist
+package com.battagliandrea.covid19.ui.dailycases
 
 
 import android.content.Context
@@ -18,34 +18,32 @@ import java.lang.Exception
 import java.lang.RuntimeException
 import javax.inject.Inject
 
-open class CaseListViewModel @Inject constructor(
-    private val syncDpcDailyVariation: SyncDpcDailyVariation,
+open class DailyCasesViewModel @Inject constructor(
     private val observeDpcDailyVariation: ObserveDpcDailyVariation,
     private val caseItemMapper: CaseItemMapper,
     private val context: Context
 ) : ViewModel() {
 
-    private val _headerViewState = MutableLiveData<CaseListViewState.Header>()
-    val headerViewState: LiveData<CaseListViewState.Header> = _headerViewState
+    private val _headerViewState = MutableLiveData<DailyCasesViewState.Header>()
+    val headerViewState: LiveData<DailyCasesViewState.Header> = _headerViewState
 
-    private val _listViewState = MutableLiveData<CaseListViewState.CasesList>()
-    val listViewState: LiveData<CaseListViewState.CasesList> = _listViewState
+    private val _listViewState = MutableLiveData<DailyCasesViewState.CasesList>()
+    val listViewState: LiveData<DailyCasesViewState.CasesList> = _listViewState
 
     private var getDpcDailyVariationJob: Job? = null
 
     init {
 
-        _headerViewState.value = CaseListViewState.Header(
+        _headerViewState.value = DailyCasesViewState.Header(
             title = context.getString(R.string.title_daily),
             description = context.getString(R.string.title_daily)
         )
 
-        _listViewState.value = CaseListViewState.CasesList(
-            caseItems = ViewState.Loading(LoadingItem.createDummy())
+        _listViewState.value = DailyCasesViewState.CasesList(
+            listViewState = ViewState.Loading(LoadingItem.createDummy())
         )
 
         observer()
-        loadDpcDailyVariation()
     }
 
     private fun observer(){
@@ -54,10 +52,12 @@ open class CaseListViewModel @Inject constructor(
             try {
                 delay(2000)
 
-                observeDpcDailyVariation().collect {dpc ->
+                observeDpcDailyVariation().collect {dpcs ->
 
-                    _listViewState.value = CaseListViewState.CasesList(
-                        caseItems = ViewState.Success(caseItemMapper.formatToCases(dpc))
+                    val dpc = dpcs.last()
+
+                    _listViewState.value = DailyCasesViewState.CasesList(
+                        listViewState = ViewState.Success(caseItemMapper.formatToCases(dpc))
                     )
 
                     _headerViewState.value = _headerViewState.value?.copy(
@@ -66,16 +66,10 @@ open class CaseListViewModel @Inject constructor(
                 }
 
             } catch (e: Exception){
-                _listViewState.value = CaseListViewState.CasesList(
-                    caseItems = ViewState.Error(data = emptyList(), throwable= RuntimeException(context.getString(R.string.error_generic)))
+                _listViewState.value = DailyCasesViewState.CasesList(
+                    listViewState = ViewState.Error(data = emptyList(), throwable= RuntimeException(context.getString(R.string.error_generic)))
                 )
             }
-        }
-    }
-
-    private fun loadDpcDailyVariation(){
-        viewModelScope.launch {
-            syncDpcDailyVariation()
         }
     }
 

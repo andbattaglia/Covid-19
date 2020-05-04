@@ -12,24 +12,31 @@ class ObserveDpcDailyVariation @Inject constructor(
 ){
 
     @ExperimentalCoroutinesApi
-    suspend operator fun invoke() : Flow<DpcVariationEntity>{
+    suspend operator fun invoke() : Flow<List<DpcVariationEntity>>{
 
             return dpcRepository.observe()
                 .map { dpcs ->
-                    val lastDpc = dpcs.last()
-                    val beforeLastDpc = dpcs.getOrNull(dpcs.lastIndex - 1)
 
-                    return@map DpcVariationEntity(
-                       date = lastDpc.date.ddMMyyyy(),
-                       activeCases = lastDpc.activeCases,
-                       activeCasesChange = lastDpc.activeCases - (beforeLastDpc?.activeCases ?: 0),
-                       death = lastDpc.totalDeath,
-                       deathChanges = lastDpc.totalDeath - (beforeLastDpc?.totalDeath ?: 0),
-                       recovered = lastDpc.totalRecovered,
-                       recoveredChange = lastDpc.totalRecovered - (beforeLastDpc?.totalRecovered ?: 0),
-                       total = lastDpc.total,
-                       totalChanges = lastDpc.total - (beforeLastDpc?.total ?: 0)
-                   )
+                    val variations = ArrayList<DpcVariationEntity>()
+
+                    dpcs.forEachIndexed { index, dpc ->
+                        val beforeLastDpc = dpcs.getOrNull(index - 1)
+                        val variation = DpcVariationEntity(
+                            date = dpc.date.ddMMyyyy(),
+                            activeCases = dpc.activeCases,
+                            activeCasesChange = dpc.activeCases - (beforeLastDpc?.activeCases ?: 0),
+                            death = dpc.totalDeath,
+                            deathChanges = dpc.totalDeath - (beforeLastDpc?.totalDeath ?: 0),
+                            recovered = dpc.totalRecovered,
+                            recoveredChange = dpc.totalRecovered - (beforeLastDpc?.totalRecovered ?: 0),
+                            total = dpc.total,
+                            totalChanges = dpc.total - (beforeLastDpc?.total ?: 0)
+                        )
+
+                        variations.add(variation)
+                    }
+
+                    return@map variations
                 }
     }
 }

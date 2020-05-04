@@ -1,10 +1,9 @@
-package com.battagliandrea.covid19.ui.caselist
+package com.battagliandrea.covid19.ui.dailycases
 
 import com.battagliandrea.covid19.ui.base.ViewState
 import com.battagliandrea.covid19.ui.common.ListItem
-import com.battagliandrea.covid19.ui.models.caseitem.CaseItem
 
-sealed class CaseListViewState {
+sealed class DailyCasesViewState {
 
     data class Header(
         val title: String,
@@ -12,7 +11,7 @@ sealed class CaseListViewState {
     )
 
     data class CasesList(
-        val caseItems: ViewState<List<ListItem>>
+        val listViewState: ViewState<List<ListItem>>
 //        val onClickHandler: OnClickHandler
     )
 }

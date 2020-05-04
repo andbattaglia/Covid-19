@@ -1,32 +1,29 @@
-package com.battagliandrea.covid19.ui.caselist
+package com.battagliandrea.covid19.ui.dailycases
 
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.battagliandrea.covid19.R
 import com.battagliandrea.covid19.ext.getViewModel
 import com.battagliandrea.covid19.ext.observe
 import com.battagliandrea.covid19.ui.base.ViewState
-import com.battagliandrea.covid19.ui.common.ListItem
 import com.battagliandrea.covid19.ui.utils.MarginItemDecorator
-import com.google.android.material.snackbar.Snackbar
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.fragment_case_list.*
 import kotlinx.android.synthetic.main.view_error.*
 import javax.inject.Inject
 
 
-class CaseListFragment : Fragment() {
+class DailyCasesFragment : Fragment() {
 
-    private lateinit var mViewModel: CaseListViewModel
+    private lateinit var mViewModel: DailyCasesViewModel
 
     @Inject
-    lateinit var mAdapter: CasesAdapter
+    lateinit var mAdapterDaily: DailyCasesAdapter
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -44,7 +41,7 @@ class CaseListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mViewModel = getViewModel<CaseListViewModel>(viewModelFactory)
+        mViewModel = getViewModel<DailyCasesViewModel>(viewModelFactory)
         with(mViewModel) {
             observe(headerViewState){ renderHeader(it) }
             observe(listViewState){ renderCasesList(it) }
@@ -54,32 +51,32 @@ class CaseListFragment : Fragment() {
     }
 
     private fun setupList(){
-        recyclerView.adapter = mAdapter
+        recyclerView.adapter = mAdapterDaily
         recyclerView.addItemDecoration(MarginItemDecorator(resources.getDimension(R.dimen.default_padding).toInt(), 0))
     }
 
-    private fun renderHeader(viewState: CaseListViewState.Header){
+    private fun renderHeader(viewState: DailyCasesViewState.Header){
         with(viewState){
             tvTitle.text = title
             tvDescription.text = description
         }
     }
 
-    private fun renderCasesList(viewState: CaseListViewState.CasesList){
+    private fun renderCasesList(viewState: DailyCasesViewState.CasesList){
         with(viewState){
-            when(caseItems){
+            when(listViewState){
                 is ViewState.Success -> {
                     containerError.visibility = View.GONE
-                    mAdapter.updateList(caseItems.data.orEmpty())
+                    mAdapterDaily.updateList(listViewState.data.orEmpty())
                 }
                 is ViewState.Error -> {
                     containerError.visibility = View.VISIBLE
-                    tvError.text = caseItems.throwable.message
-                    mAdapter.updateList(caseItems.data.orEmpty())
+                    tvError.text = listViewState.throwable.message
+                    mAdapterDaily.updateList(listViewState.data.orEmpty())
                 }
                 is ViewState.Loading -> {
                     containerError.visibility = View.GONE
-                    mAdapter.updateList(caseItems.data.orEmpty())
+                    mAdapterDaily.updateList(listViewState.data.orEmpty())
                 }
             }
         }

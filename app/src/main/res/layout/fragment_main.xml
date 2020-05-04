@@ -42,14 +42,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         tools:layout="@layout/fragment_case_list"
-                        android:name="com.battagliandrea.covid19.ui.caselist.CaseListFragment"/>
+                        android:name="com.battagliandrea.covid19.ui.dailycases.DailyCasesFragment"/>
 
                     <fragment
                         android:id="@+id/fragment_chart"
                         android:tag="ChartsFragment"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:name="com.battagliandrea.covid19.ui.charts.ChartsFragment"
+                        android:name="com.battagliandrea.covid19.ui.mainchart.MainChartFragment"
                         tools:layout="@layout/fragment_chart"/>
                 </LinearLayout>
         </LinearLayout>

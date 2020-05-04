@@ -1,4 +1,4 @@
-package com.battagliandrea.covid19.ui.models.chartitem
+package com.battagliandrea.covid19.ui.models.chartvariations
 
 import android.content.Context
 import androidx.core.content.ContextCompat
@@ -13,7 +13,7 @@ open class ChartItemMapper @Inject constructor(
     private val context: Context
 ) {
 
-    open fun formatToChartData(data: List<DpcVariationEntity>?) : List<ChartItem>{
+    open fun formatToChartData(data: List<DpcVariationEntity>?) : List<ChartVariations>{
         val valuesActive = ArrayList<Entry>()
         val valuesDeath = ArrayList<Entry>()
         val valuesRecovered = ArrayList<Entry>()
@@ -39,14 +39,14 @@ open class ChartItemMapper @Inject constructor(
         }
 
         val activeItem =
-            ChartItem(
+            ChartVariations(
                 entries = valuesActive,
                 entriesVariations = valuesActiveVariations,
                 title = context.getString(R.string.active_cases),
                 color = ContextCompat.getColor(context, R.color.pink)
             )
 
-        val deathItem = ChartItem(
+        val deathItem = ChartVariations(
             entries = valuesDeath,
             entriesVariations = valuesDeathVariations,
             title = context.getString(R.string.death_cases),
@@ -54,14 +54,14 @@ open class ChartItemMapper @Inject constructor(
         )
 
         val recoveredItem =
-            ChartItem(
+            ChartVariations(
                 entries = valuesRecovered,
                 entriesVariations = valuesRecoveredVariations,
                 title = context.getString(R.string.recovered_cass),
                 color = ContextCompat.getColor(context, R.color.green)
             )
 
-        val totalItem = ChartItem(
+        val totalItem = ChartVariations(
             entries = valuesTotal,
             entriesVariations = valuesTotalVariations,
             title = context.getString(R.string.total_cases),
