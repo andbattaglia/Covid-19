@@ -1,7 +1,5 @@
 package com.battagliandrea.usecase
 
-import com.battagliandrea.domain.entity.DpcVariationEntity
-import com.battagliandrea.domain.ext.ddMMyyyy
 import com.battagliandrea.domain.repository.DpcRepository
 import javax.inject.Inject
 

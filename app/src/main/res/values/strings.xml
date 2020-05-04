@@ -10,6 +10,8 @@
     <string name="recovered_cass">Recovered</string>
     <string name="total_cases">Total</string>
 
+    <string name="details">Details</string>
+
     <string name="tab_total">Total</string>
     <string name="tab_day_by_day">Daily</string>
 

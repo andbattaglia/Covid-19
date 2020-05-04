@@ -10,6 +10,8 @@
     <string name="recovered_cass">Guariti</string>
     <string name="total_cases">Toali</string>
 
+    <string name="details">Dettagli</string>
+
     <string name="tab_total">Totali</string>
     <string name="tab_day_by_day">Giornalieri</string>
 

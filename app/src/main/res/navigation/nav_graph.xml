@@ -11,6 +11,18 @@
         android:name="com.battagliandrea.covid19.ui.main.MainFragment"
         android:label="NavMain"
         tools:layout="@layout/fragment_main">
+
+        <action
+            android:id="@+id/action_mainFragment_to_regionsFragment"
+            app:destination="@id/fragment_regions" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_regions"
+        android:name="com.battagliandrea.covid19.ui.regions.RegionsFragment"
+        android:label="NavMain"
+        tools:layout="@layout/fragment_regions">
     </fragment>
 
 </navigation>

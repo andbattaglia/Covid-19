@@ -21,36 +21,45 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingTop="250dp"
+            android:clipToPadding="false"
             android:orientation="vertical">
 
-            <Space
-                android:layout_height="250dp"
-                android:layout_width="match_parent"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/default_padding"
+                android:orientation="vertical"
+                android:outlineProvider="paddedBounds"
+                android:elevation="10dp"
+                android:background="@drawable/background_rect_rounded_top_white">
 
-                <LinearLayout
+                <fragment
+                    android:id="@+id/fragment_case_list"
+                    android:tag="CaseListFragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/default_padding"
-                    android:orientation="vertical"
-                    android:outlineProvider="paddedBounds"
-                    android:elevation="10dp"
-                    android:background="@drawable/background_rect_rounded_top_white">
+                    tools:layout="@layout/fragment_case_list"
+                    android:name="com.battagliandrea.covid19.ui.dailycases.DailyCasesFragment"/>
 
-                    <fragment
-                        android:id="@+id/fragment_case_list"
-                        android:tag="CaseListFragment"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        tools:layout="@layout/fragment_case_list"
-                        android:name="com.battagliandrea.covid19.ui.dailycases.DailyCasesFragment"/>
+                <Button
+                    android:id="@+id/detailsButton"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:drawableEnd="@drawable/ic_arrow_right"
+                    android:drawableTint="@color/primaryColor"
+                    android:textAllCaps="false"
+                    android:text="Details" />
 
-                    <fragment
-                        android:id="@+id/fragment_chart"
-                        android:tag="ChartsFragment"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:name="com.battagliandrea.covid19.ui.mainchart.MainChartFragment"
-                        tools:layout="@layout/fragment_chart"/>
+                <fragment
+                    android:id="@+id/fragment_chart"
+                    android:tag="ChartsFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:name="com.battagliandrea.covid19.ui.mainchart.MainChartFragment"
+                    tools:layout="@layout/fragment_chart"/>
                 </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
