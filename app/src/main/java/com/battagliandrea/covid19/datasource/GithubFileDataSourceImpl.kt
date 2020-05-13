@@ -17,6 +17,16 @@ class GithubFileDataSourceImpl @Inject constructor(
             .let {
                 it.body()
                 ?.map()
-                .orEmpty() }
+                .orEmpty()
+            }
+    }
+
+    override suspend fun getRegionDpcs(): List<DpcEntity> {
+        return githubContentContract.getRegionDpcs()
+            .let {
+                it.body()
+                    ?.map()
+                    .orEmpty()
+            }
     }
 }

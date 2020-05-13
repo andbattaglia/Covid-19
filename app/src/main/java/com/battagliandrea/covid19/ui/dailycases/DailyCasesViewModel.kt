@@ -8,9 +8,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.battagliandrea.covid19.R
 import com.battagliandrea.covid19.ui.base.ViewState
-import com.battagliandrea.covid19.ui.models.caseitem.CaseItemMapper
-import com.battagliandrea.covid19.ui.models.lodingitem.LoadingItem
-import com.battagliandrea.usecase.SyncDpcDailyVariation
+import com.battagliandrea.covid19.ui.items.caseitem.CaseItemMapper
+import com.battagliandrea.covid19.ui.items.lodingitem.LoadingItem
 import com.battagliandrea.usecase.ObserveDpcDailyVariation
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collect

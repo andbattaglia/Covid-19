@@ -1,9 +1,8 @@
-package com.battagliandrea.covid19.ui.viewholder
+package com.battagliandrea.covid19.ui.items.caseitem
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.battagliandrea.covid19.ui.models.caseitem.CaseItem
-import kotlinx.android.synthetic.main.view_case_item.view.*
+import kotlinx.android.synthetic.main.view_case_horizontal_item.view.*
 
 class CaseItemVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
 

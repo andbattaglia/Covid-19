@@ -1,7 +1,7 @@
 package com.battagliandrea.covid19.ui.mainchart
 
 import com.battagliandrea.covid19.ui.base.ViewState
-import com.battagliandrea.covid19.ui.models.chartvariations.ChartVariations
+import com.battagliandrea.covid19.ui.items.chartvariations.ChartVariations
 
 sealed class MainChartViewState {
 

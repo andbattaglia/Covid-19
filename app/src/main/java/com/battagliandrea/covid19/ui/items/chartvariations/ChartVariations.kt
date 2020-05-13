@@ -1,4 +1,4 @@
-package com.battagliandrea.covid19.ui.models.chartvariations
+package com.battagliandrea.covid19.ui.items.chartvariations
 
 import com.github.mikephil.charting.data.Entry
 

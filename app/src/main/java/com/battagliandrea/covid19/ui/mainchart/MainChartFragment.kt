@@ -14,7 +14,7 @@ import com.battagliandrea.covid19.R
 import com.battagliandrea.covid19.ext.getViewModel
 import com.battagliandrea.covid19.ext.observe
 import com.battagliandrea.covid19.ui.base.ViewState
-import com.battagliandrea.covid19.ui.models.chartvariations.ChartVariations
+import com.battagliandrea.covid19.ui.items.chartvariations.ChartVariations
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.components.YAxis.AxisDependency

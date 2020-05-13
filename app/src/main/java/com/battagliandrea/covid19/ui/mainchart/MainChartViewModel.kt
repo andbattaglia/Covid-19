@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.battagliandrea.covid19.R
 import com.battagliandrea.covid19.ui.base.ViewState
-import com.battagliandrea.covid19.ui.models.chartvariations.ChartItemMapper
+import com.battagliandrea.covid19.ui.items.chartvariations.ChartItemMapper
 import com.battagliandrea.usecase.ObserveDpcDailyVariation
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collect

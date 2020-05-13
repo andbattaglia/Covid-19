@@ -1,8 +1,7 @@
-package com.battagliandrea.covid19.ui.viewholder
+package com.battagliandrea.covid19.ui.items.lodingitem
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.battagliandrea.covid19.ui.models.lodingitem.LoadingItem
 
 class LoadingItemVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
 

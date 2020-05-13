@@ -1,4 +1,4 @@
-package com.battagliandrea.covid19.ui.models.chartvariations
+package com.battagliandrea.covid19.ui.items.chartvariations
 
 import android.content.Context
 import androidx.core.content.ContextCompat

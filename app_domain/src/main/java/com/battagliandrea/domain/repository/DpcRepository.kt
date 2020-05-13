@@ -11,4 +11,6 @@ interface DpcRepository {
     suspend fun sync()
 
     suspend fun get(): List<DpcEntity>
+
+    suspend fun get(regionCode: Long): List<DpcEntity>
 }

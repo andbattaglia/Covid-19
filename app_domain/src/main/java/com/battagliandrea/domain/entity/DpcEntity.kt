@@ -5,6 +5,8 @@ import java.util.*
 data class DpcEntity (
     val date: Date = Date(),
     val nation: String = "",
+    val regionCode: Long = 0,
+    val regionName: String = "",
     val intensiveCare: Long = 0,
     val hospitalized: Long = 0,
     val totalHospitalized: Long = 0,

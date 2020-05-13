@@ -35,4 +35,9 @@ open class DpcRepositoryImpl @Inject constructor(
     override suspend fun get(): List<DpcEntity> {
         return githubFileDataSource.getDpcs()
     }
+
+    override suspend fun get(regionCode: Long): List<DpcEntity> {
+        return githubFileDataSource.getRegionDpcs()
+            .filter { it.regionCode == regionCode }
+    }
 }

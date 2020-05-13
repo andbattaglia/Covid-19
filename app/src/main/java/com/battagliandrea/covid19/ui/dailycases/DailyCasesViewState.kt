@@ -1,7 +1,7 @@
 package com.battagliandrea.covid19.ui.dailycases
 
 import com.battagliandrea.covid19.ui.base.ViewState
-import com.battagliandrea.covid19.ui.common.ListItem
+import com.battagliandrea.covid19.ui.items.base.ListItem
 
 sealed class DailyCasesViewState {
 

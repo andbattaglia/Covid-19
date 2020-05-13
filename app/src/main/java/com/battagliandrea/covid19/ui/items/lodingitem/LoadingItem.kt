@@ -1,6 +1,6 @@
-package com.battagliandrea.covid19.ui.models.lodingitem
+package com.battagliandrea.covid19.ui.items.lodingitem
 
-import com.battagliandrea.covid19.ui.common.ListItem
+import com.battagliandrea.covid19.ui.items.base.ListItem
 
 data class LoadingItem(
     override val id: Long = 0

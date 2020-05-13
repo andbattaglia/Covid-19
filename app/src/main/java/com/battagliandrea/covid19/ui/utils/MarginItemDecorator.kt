@@ -24,8 +24,8 @@ class MarginItemDecorator(
                     if (parent.getChildAdapterPosition(view) == 0) {
                         top = spaceHeight
                     }
-                    left =  spaceHeight * 2
-                    right = spaceHeight * 2
+                    left =  spaceHeight
+                    right = spaceHeight
                     bottom = spaceHeight
                 }
             }

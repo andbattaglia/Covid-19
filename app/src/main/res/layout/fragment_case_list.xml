@@ -47,7 +47,7 @@
             android:clipToPadding="false"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:orientation="horizontal"
-            tools:listitem="@layout/view_case_item" />
+            tools:listitem="@layout/view_case_horizontal_item" />
 
         <include layout="@layout/view_error"/>
     </FrameLayout>

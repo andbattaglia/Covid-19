@@ -1,10 +1,9 @@
-package com.battagliandrea.covid19.ui.models.caseitem
+package com.battagliandrea.covid19.ui.items.caseitem
 
 import android.content.Context
 import androidx.core.content.ContextCompat
 import com.battagliandrea.covid19.R
 import com.battagliandrea.domain.entity.DpcVariationEntity
-import com.github.mikephil.charting.data.Entry
 import javax.inject.Inject
 import javax.inject.Singleton
 
