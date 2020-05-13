@@ -14,8 +14,6 @@ open class RegionRepositoryImpl @Inject constructor(
         RegionEntity(code = 1, name = "Piemonte"),
         RegionEntity(code = 2, name = "Valle d'Aosta"),
         RegionEntity(code = 3, name = "Lombardia"),
-        RegionEntity(code = 4, name = "P.A. Bolzano"),
-        RegionEntity(code = 4, name = "P.A. Trento"),
         RegionEntity(code = 5, name = "Veneto"),
         RegionEntity(code = 6, name = "Friuli Venezia Giulia"),
         RegionEntity(code = 7, name = "Liguria"),
