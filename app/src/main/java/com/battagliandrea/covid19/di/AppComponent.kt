@@ -2,6 +2,7 @@ package com.battagliandrea.covid19.di
 
 import android.app.Application
 import com.battagliandrea.covid19.di.module.*
+import com.battagliandrea.covid19.di.viewmodel.BuilderModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -15,7 +16,7 @@ import javax.inject.Singleton
             AppModule::class,
             ActivityModule::class,
             FragmentModule::class,
-            ViewModelModule::class,
+            BuilderModule::class,
             RepositoryModule::class,
             DataSourceModule::class,
             FrameworkModule::class,

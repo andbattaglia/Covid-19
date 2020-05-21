@@ -2,23 +2,30 @@ package com.battagliandrea.covid19.ui.mainchart
 
 
 import android.content.Context
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.battagliandrea.covid19.R
+import com.battagliandrea.covid19.di.viewmodel.AssistedSavedStateViewModelFactory
 import com.battagliandrea.covid19.ui.base.ViewState
 import com.battagliandrea.covid19.ui.items.chartvariations.ChartItemMapper
 import com.battagliandrea.usecase.ObserveDpcDailyVariation
+import com.squareup.inject.assisted.Assisted
+import com.squareup.inject.assisted.AssistedInject
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 
-open class MainChartViewModel @Inject constructor(
+open class MainChartViewModel @AssistedInject constructor(
+    @Assisted private val savedStateHandle: SavedStateHandle,
     private val observeDpcDailyVariation: ObserveDpcDailyVariation,
     private val chartItemMapper: ChartItemMapper,
     private val context: Context
 ) : ViewModel() {
+
+    @AssistedInject.Factory
+    interface Factory : AssistedSavedStateViewModelFactory<MainChartViewModel> {
+        override fun create(savedStateHandle: SavedStateHandle): MainChartViewModel
+    }
+
 
     private val _tabsViewState = MutableLiveData<MainChartViewState.Tabs>()
     val tabsViewState: LiveData<MainChartViewState.Tabs> = _tabsViewState

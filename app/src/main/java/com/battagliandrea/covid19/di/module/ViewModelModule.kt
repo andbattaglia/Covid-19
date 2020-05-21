@@ -14,23 +14,10 @@ import dagger.multibindings.IntoMap
 @Module
 class ViewModelModule {
 
-    @Provides
-    @IntoMap
-    @ViewModelKey(MainViewModel::class)
-    fun provideMainViewModel(viewModel: MainViewModel): ViewModel = viewModel
 
-    @Provides
-    @IntoMap
-    @ViewModelKey(DailyCasesViewModel::class)
-    fun provideDailyCasesViewModel(viewModel: DailyCasesViewModel): ViewModel = viewModel
 
-    @Provides
-    @IntoMap
-    @ViewModelKey(MainChartViewModel::class)
-    fun provideMainChartViewModel(viewModel: MainChartViewModel): ViewModel = viewModel
-
-    @Provides
-    @IntoMap
-    @ViewModelKey(RegionsViewModel::class)
-    fun provideRegionViewModel(viewModel: RegionsViewModel): ViewModel = viewModel
+//    @Provides
+//    @IntoMap
+//    @ViewModelKey(RegionsViewModel::class)
+//    fun provideRegionViewModel(viewModel: RegionsViewModel): ViewModel = viewModel
 }

@@ -2,26 +2,32 @@ package com.battagliandrea.covid19.ui.dailycases
 
 
 import android.content.Context
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.battagliandrea.covid19.R
+import com.battagliandrea.covid19.di.viewmodel.AssistedSavedStateViewModelFactory
 import com.battagliandrea.covid19.ui.base.ViewState
 import com.battagliandrea.covid19.ui.items.caseitem.CaseItemMapper
 import com.battagliandrea.covid19.ui.items.lodingitem.LoadingItem
 import com.battagliandrea.usecase.ObserveDpcDailyVariation
+import com.squareup.inject.assisted.Assisted
+import com.squareup.inject.assisted.AssistedInject
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collect
 import java.lang.Exception
 import java.lang.RuntimeException
 import javax.inject.Inject
 
-open class DailyCasesViewModel @Inject constructor(
+open class DailyCasesViewModel @AssistedInject constructor(
+    @Assisted private val savedStateHandle: SavedStateHandle,
     private val observeDpcDailyVariation: ObserveDpcDailyVariation,
     private val caseItemMapper: CaseItemMapper,
     private val context: Context
 ) : ViewModel() {
+
+    @AssistedInject.Factory
+    interface Factory : AssistedSavedStateViewModelFactory<DailyCasesViewModel> {
+        override fun create(savedStateHandle: SavedStateHandle): DailyCasesViewModel
+    }
 
     private val _headerViewState = MutableLiveData<DailyCasesViewState.Header>()
     val headerViewState: LiveData<DailyCasesViewState.Header> = _headerViewState

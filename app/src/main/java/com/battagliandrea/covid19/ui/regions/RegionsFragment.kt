@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.battagliandrea.covid19.R
+import com.battagliandrea.covid19.di.viewmodel.InjectingSavedStateViewModelFactory
 import com.battagliandrea.covid19.ext.getViewModel
 import com.battagliandrea.covid19.ext.observe
 import com.battagliandrea.covid19.ui.base.ViewState
@@ -29,7 +30,7 @@ class RegionsFragment : Fragment() {
     lateinit var mAdapter: RegionsDailyCasesAdapter
 
     @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+    lateinit var abstractFactory: InjectingSavedStateViewModelFactory
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -43,7 +44,7 @@ class RegionsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mViewModel = getViewModel<RegionsViewModel>(viewModelFactory)
+        mViewModel = getViewModel<RegionsViewModel>(abstractFactory, savedInstanceState)
         with(mViewModel) {
             observe(regionsDialog){ renderRegionsDialog(it) }
             observe(regionsChooser){ renderRegionsChooser(it) }

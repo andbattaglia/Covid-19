@@ -1,4 +1,4 @@
-package com.battagliandrea.covid19.di.module
+package com.battagliandrea.covid19.di.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

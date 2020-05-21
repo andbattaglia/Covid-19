@@ -10,10 +10,12 @@ dependencies {
     implementation deps.dagger.runtime
     implementation deps.dagger.android
     implementation deps.dagger.android_support
-    implementation deps.dagger.viewmodel_inject
     kapt deps.dagger.compiler
     kapt deps.dagger.processor
-    kapt deps.dagger.viewmodel_inject_processor
+
+    compileOnly 'com.squareup.inject:assisted-inject-annotations-dagger2:0.5.2'
+    kapt 'com.squareup.inject:assisted-inject-processor-dagger2:0.5.2'
+
 
     implementation deps.gson.runtime
     implementation deps.okhttp.runtime
@@ -30,6 +32,7 @@ dependencies {
     implementation deps.androidx.appcompat
     implementation deps.androidx.lifecycleExt
     implementation deps.androidx.lifecycleViewmodel
+    implementation deps.androidx.lifecycleViewmodelSavedState
     implementation deps.androidx.constraint
     implementation deps.androidx.constraint_solver
     implementation deps.androidx.navigation_fragment

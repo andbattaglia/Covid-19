@@ -3,6 +3,7 @@ package com.battagliandrea.covid19.di.module
 import android.app.Application
 import android.content.Context
 import androidx.lifecycle.ViewModelProvider
+import com.battagliandrea.covid19.di.viewmodel.ViewModelFactory
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

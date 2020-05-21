@@ -1,9 +1,7 @@
 package com.battagliandrea.covid19.ui.regions
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
+import com.battagliandrea.covid19.di.viewmodel.AssistedSavedStateViewModelFactory
 import com.battagliandrea.covid19.ui.base.SingleLiveEvent
 import com.battagliandrea.covid19.ui.base.ViewState
 import com.battagliandrea.covid19.ui.items.base.ListItem
@@ -12,11 +10,14 @@ import com.battagliandrea.covid19.ui.listdialog.ListDialogMapper
 import com.battagliandrea.usecase.GetRegions
 import com.battagliandrea.usecase.GetRegionByCode
 import com.battagliandrea.usecase.GetRegionDpcDailyVariations
+import com.squareup.inject.assisted.Assisted
+import com.squareup.inject.assisted.AssistedInject
 import kotlinx.coroutines.*
 import java.lang.Exception
 import javax.inject.Inject
 
-open class RegionsViewModel @Inject constructor(
+open class RegionsViewModel @AssistedInject constructor(
+    @Assisted private val savedStateHandle: SavedStateHandle,
     private val getRegions: GetRegions,
     private val getRegionByCode: GetRegionByCode,
     private val getRegionDpcsDaily: GetRegionDpcDailyVariations,
@@ -24,6 +25,11 @@ open class RegionsViewModel @Inject constructor(
     private val listDialogMapper: ListDialogMapper,
     private val caseItemMapper: CaseItemMapper
 ) : ViewModel() {
+
+    @AssistedInject.Factory
+    interface Factory : AssistedSavedStateViewModelFactory<RegionsViewModel> {
+        override fun create(savedStateHandle: SavedStateHandle): RegionsViewModel
+    }
 
     private val _regionsDialog = SingleLiveEvent<RegionsViewState.RegionsDialog>()
     val regionsDialog: LiveData<RegionsViewState.RegionsDialog> = _regionsDialog

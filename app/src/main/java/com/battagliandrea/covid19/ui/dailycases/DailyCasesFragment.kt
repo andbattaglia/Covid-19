@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.battagliandrea.covid19.R
+import com.battagliandrea.covid19.di.viewmodel.InjectingSavedStateViewModelFactory
 import com.battagliandrea.covid19.ext.getViewModel
 import com.battagliandrea.covid19.ext.observe
 import com.battagliandrea.covid19.ui.base.ViewState
@@ -26,7 +27,7 @@ class DailyCasesFragment : Fragment() {
     lateinit var mAdapterDaily: DailyCasesAdapter
 
     @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+    lateinit var abstractFactory: InjectingSavedStateViewModelFactory
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_case_list, container, false)
@@ -41,7 +42,7 @@ class DailyCasesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mViewModel = getViewModel<DailyCasesViewModel>(viewModelFactory)
+        mViewModel = getViewModel<DailyCasesViewModel>(abstractFactory, savedInstanceState)
         with(mViewModel) {
             observe(headerViewState){ renderHeader(it) }
             observe(listViewState){ renderCasesList(it) }
